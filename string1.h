@@ -39,15 +39,11 @@ void *memmov(void *str1, const void *str2,size_t n);
 
 char *strpbrk1(char *str1, char *str2);
 
-//char *strsep(char **stringp, const char *delim);      
-
 char *strstr1(char *str1, char *str2);
 
 int stringcoll (char *str1, char *str2);          
 
 char *strtoken(char *str, const char *tok);
-
-//size_t strxfrm(char *dest, const char *src, size_t n);       
 
 char *stringfry(char *str);
 
