@@ -37,6 +37,8 @@ void *memcopy(void *str1, const void *str2, size_t n);
 
 void *memmov(void *str1, const void *str2,size_t n);
 
+int memcomp(void* str1, void* str2, size_t n);
+
 char *strpbrk1(char *str1, char *str2);
 
 char *strstr1(char *str1, char *str2);
