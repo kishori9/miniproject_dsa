@@ -1,3 +1,4 @@
+
 /******************************************************************************
  string1.c
 
@@ -5,32 +6,24 @@
 
  Copyright (C) 2016 Kishori Kasat. All rights reserved. 
 
- Redistribution and use in source and binary forms, with or without
- modification, are permitted provided that the following conditions
- are met:
+  This program is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Lesser General Public License as published by
+  the Free Software Foundation; either version 2.1 of the License, or
+  (at your option) any later version.
  
- 1. Redistributions of source code must retain the above copyright 
-    notice, this list of conditions and the following disclaimer.  
- 2. Neither the name of the project nor the names of its contributors
-    may be used to endorse or promote products derived from this software
-    without specific prior written permission. 
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  GNU Lesser General Public License for more details.
  
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
- FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
- OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
- OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF 
- SUCH DAMAGE.
- 
-************************************************************************************/
+  You should have received a copy of the GNU Lesser General Public License
+  along with this program; if not, see <http://www.gnu.org/licences/> .
+  
+ ********************************************************************************/
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include <stddef.h>
 #include"string1.h"
 
 /*to calculate the length of the string*/
@@ -255,6 +248,27 @@ void *memmov(void *str1, const void *str2,size_t n)
 		while (n--)
 			*--tmp = *--s;
 	}
+}
+
+/* function compares the first n characters of the object pointed to by str1 to the first n characters of the object pointed to by str2. */
+int memcomp(void* str1, void* str2, size_t n)
+{
+	int l1 = strlength(str1);	
+	int l2 = strlength(str2);
+	if(l1 < n && l2 < n)
+		return -1; 
+    	char *p1 = str1, *p2 = str2;
+    	while(n--)
+    	{
+        	if( *p1 != *p2 )
+            		return *p1 - *p2;
+        	else
+        	{
+            		p1++;
+            		p2++;
+            	}
+	}
+    	return 0;
 }
 
 /*  Returns a duplicate of the string str  in  memory  allocated  using malloc */
